@@ -4,6 +4,8 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   srcDir: "pages",
   
+  base: '/justraces/',
+
   title: "Just Races",
   description: "Lightweight, data-driven Minecraft races framework.",
   themeConfig: {
