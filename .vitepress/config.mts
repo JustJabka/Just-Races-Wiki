@@ -29,8 +29,22 @@ export default defineConfig({
             { text: 'Creating Your First Race', link: '/docs/races/first-race'},
             { text: 'Advanced Race', link: '/docs/races/advanced-race'}
           ]
+        },
+        {
+          text: 'Abilities',
+          items: [
+            { text: 'Creating Your First Ability', link: '/docs/abilities/first-ability'},
+          ]
         }
       ]
+    },
+
+    outline: {
+      level: [2, 4]
+    },
+
+    search: {
+      provider: 'local'
     },
 
     socialLinks: [
