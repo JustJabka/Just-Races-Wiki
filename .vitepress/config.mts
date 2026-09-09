@@ -26,6 +26,7 @@ export default defineConfig({
         {
           text: 'Races',
           items: [
+            { text: 'Race Definition', link: '/docs/races/race-definition'},
             { text: 'Creating Your First Race', link: '/docs/races/first-race'},
             { text: 'Advanced Race', link: '/docs/races/advanced-race'}
           ]
@@ -34,6 +35,13 @@ export default defineConfig({
           text: 'Abilities',
           items: [
             { text: 'Creating Your First Ability', link: '/docs/abilities/first-ability'},
+            { text: 'Advanced Ability', link: '/docs/abilities/advanced-ability'},
+          ]
+        },
+        {
+          text: 'Miscellaneous',
+          items: [
+            { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'}
           ]
         }
       ]
