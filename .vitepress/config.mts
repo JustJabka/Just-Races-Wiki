@@ -39,6 +39,12 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Traits',
+          items: [
+            { text: 'Creating Your First Trait', link: '/docs/traits/first-trait'},
+          ]
+        },
+        {
           text: 'Miscellaneous',
           items: [
             { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'}
