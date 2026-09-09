@@ -5,11 +5,20 @@ export default defineConfig({
   srcDir: "pages",
   
   base: '/Just-Races-Wiki/',
+  appearance: true,
+
+  head: [
+    [
+      'link', { rel: 'icon', href: '/Just-Races-Wiki/favicon.png' }
+    ]
+  ],
 
   title: "Just Races",
-  description: "Lightweight, data-driven Minecraft races framework.",
+  description: "Lightweight, data-driven Minecraft races framework",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: "/logo.png",
+
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Documentation', link: '/docs/' },
@@ -21,10 +30,12 @@ export default defineConfig({
       '/docs/': [
         {
           text: 'Getting Started',
+          collapsed: true,
           items: []
         },
         {
           text: 'Races',
+          collapsed: true,
           items: [
             { text: 'Race Definition', link: '/docs/races/race-definition'},
             { text: 'Creating Your First Race', link: '/docs/races/first-race'},
@@ -33,6 +44,7 @@ export default defineConfig({
         },
         {
           text: 'Abilities',
+          collapsed: true,
           items: [
             { text: 'Creating Your First Ability', link: '/docs/abilities/first-ability'},
             { text: 'Advanced Ability', link: '/docs/abilities/advanced-ability'},
@@ -40,12 +52,14 @@ export default defineConfig({
         },
         {
           text: 'Traits',
+          collapsed: true,
           items: [
             { text: 'Creating Your First Trait', link: '/docs/traits/first-trait'},
           ]
         },
         {
           text: 'Item Modifiers',
+          collapsed: true,
           items: [
             { text: 'Creating Your First Item Modifier', link: '/docs/item-modifiers/first-item-modifier'},
             { text: 'Advanced Item Modifier', link: '/docs/item-modifiers/advanced-item-modifier'},
@@ -53,6 +67,7 @@ export default defineConfig({
         },
         {
           text: 'Miscellaneous',
+          collapsed: true,
           items: [
             { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'},
           ]
