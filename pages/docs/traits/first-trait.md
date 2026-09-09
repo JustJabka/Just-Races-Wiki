@@ -28,7 +28,7 @@ public class ExampleListenerTrait extends BaseTraitListener {
 
     @Override
     public NamespacedKey getKey() {
-        return new NamespacedKey("example", "example_listener_trait");
+        return new NamespacedKey("example", "test_listener_trait");
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -65,7 +65,7 @@ public class ExampleRunnableTrait extends BaseTraitRunnable {
 
     @Override
     public NamespacedKey getKey() {
-        return new NamespacedKey("example", "example_runnable_trait");
+        return new NamespacedKey("example", "test_runnable_trait");
     }
 
     @Override
@@ -117,7 +117,7 @@ public class ExampleListenerTrait extends BaseTraitListener implements TraitConf
 
     @Override
     public NamespacedKey getKey() {
-        return new NamespacedKey("example", "example_listener_trait");
+        return new NamespacedKey("example", "test_listener_trait");
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -140,7 +140,7 @@ public class ExampleListenerTrait extends BaseTraitListener implements TraitConf
 
 Create a corresponding JSON file inside your plugin's `resources/traits/` folder matching your key namespace:
 
-`resources/traits/example_listener_trait.json`
+`resources/traits/test_listener_trait.json`
 ```json
 {
     "damage_multiplier": 1.5

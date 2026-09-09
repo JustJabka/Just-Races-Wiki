@@ -28,7 +28,7 @@ export default defineConfig({
           items: [
             { text: 'Race Definition', link: '/docs/races/race-definition'},
             { text: 'Creating Your First Race', link: '/docs/races/first-race'},
-            { text: 'Advanced Race', link: '/docs/races/advanced-race'}
+            { text: 'Advanced Race', link: '/docs/races/advanced-race'},
           ]
         },
         {
@@ -45,9 +45,16 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Item Modifiers',
+          items: [
+            { text: 'Creating Your First Item Modifier', link: '/docs/item-modifiers/first-item-modifier'},
+            { text: 'Advanced Item Modifier', link: '/docs/item-modifiers/advanced-item-modifier'},
+          ]
+        },
+        {
           text: 'Miscellaneous',
           items: [
-            { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'}
+            { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'},
           ]
         }
       ]

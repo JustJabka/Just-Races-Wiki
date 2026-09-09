@@ -61,7 +61,7 @@ public class ExamplePersistentAbility extends BaseAbility {
 
     @Override
     public NamespacedKey getKey() {
-        return new NamespacedKey("example", "example_persistent_ability");
+        return new NamespacedKey("example", "test_persistent_ability");
     }
 
     @Override
@@ -92,5 +92,5 @@ public class ExamplePersistentAbility extends BaseAbility {
 ```
 
 ::: info NBT Storage Path
-In the example above, the key `example:example_persistent_ability` is stored inside `BukkitValues."justraces:abilities"`, keeping it isolated from other plugins and root player data.
+In the example above, the key `example:test_persistent_ability` is stored inside `BukkitValues."justraces:abilities"`, keeping it isolated from other plugins and root player data.
 :::
