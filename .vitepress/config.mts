@@ -22,7 +22,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Documentation', link: '/docs/' },
-      { text: 'Configuration', link: '/config/'},
+      { text: 'Administration', link: '/admin/'},
       { text: 'Wiki', link: '/wiki/'}
     ],
 
@@ -32,7 +32,7 @@ export default defineConfig({
           text: 'Developer Guides',
           collapsed: true,
           items: [
-            { text: 'Getting Started', link: '/docs/index' }
+            { text: 'Getting Started', link: '/docs/' },
           ]
         },
         {
@@ -72,6 +72,17 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: 'Persistent Holder', link: '/docs/misc/persistent-holder'},
+          ]
+        }
+      ],
+      '/admin/': [
+        {
+          text: 'Administrator Guides',
+          collapsed: true,
+          items: [
+            { text: 'Getting Started', link: '/admin/' },
+            { text: 'Configuring', link: '/admin/configuring' },
+            { text: 'Commands', link: '/admin/commands' },
           ]
         }
       ]

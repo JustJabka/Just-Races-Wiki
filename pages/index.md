@@ -14,11 +14,11 @@ features:
     link: /docs
   - icon: 🖥️
     title: Admin Guides
-    details: Tutorial about using Data-driven configuration
-    link: /config
+    details: Tutorial about downloading the plugin, commands and managing configurations
+    link: /admin
   - icon: 📚
     title: Player Guides
-    details: Info about all 6 races and their abilities from default addon
+    details: Info about all 6 races and their abilities from the default addon
     link: /wiki
 ---
 
