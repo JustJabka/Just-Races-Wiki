@@ -52,8 +52,8 @@ In this example, an ability tracks how many times a player has activated it. Onc
 ```java
 package com.example.addon.ability;
 
-import justjabka.JustRaces.Abilities.Generic.BaseAbility;
-import justjabka.JustRaces.Types.AbilityContext;
+import justjabka.justraces.api.abilities.generic.BaseAbility;
+import justjabka.justraces.api.types.AbilityContext;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 

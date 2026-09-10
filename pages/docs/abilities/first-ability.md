@@ -11,10 +11,10 @@ To build a basic ability, extend `BaseAbility` and define its default attributes
 ```java
 package com.example.addon.ability;
 
-import justjabka.JustRaces.Abilities.Generic.BaseAbility;
-import justjabka.JustRaces.Types.AbilityContext;
-import justjabka.JustRaces.Types.Trigger;
-import justjabka.JustRaces.Types.TriggerCondition;
+import justjabka.justraces.api.abilities.generic.BaseAbility;
+import justjabka.justraces.api.types.AbilityContext;
+import justjabka.justraces.api.types.Trigger;
+import justjabka.justraces.api.types.TriggerCondition;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -82,8 +82,8 @@ Register your ability during plugin initialization before loading any race resou
 package com.example.addon.registry;
 
 import com.example.addon.ability.ExampleAbility;
-import justjabka.JustRaces.Abilities.Generic.BaseAbility;
-import justjabka.JustRaces.JustRacesRegistries;
+import justjabka.justraces.api.abilities.generic.BaseAbility;
+import justjabka.justraces.api.JustRacesRegistries;
 import org.jetbrains.annotations.NotNull;
 
 public class AbilitiesRegistry {
@@ -116,9 +116,9 @@ To make your ability customizable via JSON instead of hardcoding values in Java 
 ```java
 package com.example.addon.ability;
 
-import justjabka.JustRaces.Abilities.Generic.BaseAbility;
-import justjabka.JustRaces.Interfaces.Configurable.AbilityConfigurable;
-import justjabka.JustRaces.Types.AbilityContext;
+import justjabka.justraces.api.abilities.generic.BaseAbility;
+import justjabka.justraces.api.interfaces.configurable.AbilityConfigurable;
+import justjabka.justraces.api.types.AbilityContext;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;

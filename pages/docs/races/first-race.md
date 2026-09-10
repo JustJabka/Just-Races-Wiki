@@ -87,7 +87,7 @@ Call `ResourceManager.registerRacesFromPlugin()` inside your `onEnable()` method
 ```java{10-12}
 package com.example.addon;
 
-import justjabka.JustRaces.Managers.ResourceManager;
+import justjabka.justraces.api.managers.ResourceManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ExampleAddon extends JavaPlugin {

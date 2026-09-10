@@ -15,7 +15,7 @@ Use `BaseRaceRunnable` to execute periodic logic specifically for online players
 ```java
 package com.example.addon.runnable;
 
-import justjabka.JustRaces.Runnables.Generic.BaseRaceRunnable;
+import justjabka.justraces.api.runnables.generic.BaseRaceRunnable;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 
@@ -43,7 +43,7 @@ Use of `isRequiredRace(Player)` in the `onTick(Player)` is reduntand because it 
 package com.example.addon.listener;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
-import justjabka.JustRaces.Listeners.Generic.BaseRaceListener;
+import justjabka.justraces.api.listeners.generic.BaseRaceListener;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
