@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  srcDir: "pages",
+  srcDir: 'pages',
   
   base: '/Just-Races-Wiki/',
   appearance: true,
@@ -13,11 +13,11 @@ export default defineConfig({
     ]
   ],
 
-  title: "Just Races",
-  description: "Lightweight, data-driven Minecraft races framework",
+  title: 'Just Races',
+  description: 'Lightweight, data-driven Minecraft races framework',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/logo.png",
+    logo: '/logo.png',
 
     nav: [
       { text: 'Home', link: '/' },
@@ -88,7 +88,8 @@ export default defineConfig({
     ],
     
     footer: {
-      "message": "NOT AN OFFICIAL MINECRAFT WEBSITE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT."
+      message: 'NOT AN OFFICIAL MINECRAFT WEBSITE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.',
+      copyright: '© 2026 - JusJabka. Released under the MIT license.'
     }
   },
 
