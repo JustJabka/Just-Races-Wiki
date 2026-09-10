@@ -29,9 +29,11 @@ export default defineConfig({
     sidebar: {
       '/docs/': [
         {
-          text: 'Getting Started',
+          text: 'Developer Guides',
           collapsed: true,
-          items: []
+          items: [
+            { text: 'Getting Started', link: '/docs/index' }
+          ]
         },
         {
           text: 'Races',
