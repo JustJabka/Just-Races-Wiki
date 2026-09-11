@@ -12,6 +12,7 @@ Every field in the Race Definition is **optional**. Unspecified fields will simp
 | --- | --- | --- |
 | `name` | `Component` | Display name of the race (also supports raw text objects). |
 | `description` | `List<Component>` | Multi-line lore shown in race-selection screen. |
+| `icon` | `Component` | Icon shown in race-selection screen. |
 | `attributes` | `Map<Attribute, Double>` | Vanilla or custom attribute modifiers applied while playing as this race. |
 | `abilities` | `Set<AbilityBinding>` | Active abilities mapped to keys or triggers. |
 | `traits` | `Set<Trait>` | Passive mechanics. |

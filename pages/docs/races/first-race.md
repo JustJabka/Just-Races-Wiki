@@ -15,6 +15,10 @@ Place your JSON file inside your server's data folder:
     "A sturdy warrior built for close combat.",
     "Higher health, but naturally hits heavier."
   ],
+  "icon": {
+    "atlas": "minecraft:items",
+    "sprite": "minecraft:item/diamond"
+  },
   "attributes": {
     "minecraft:max_health": 26,
     "minecraft:attack_damage": 2.0

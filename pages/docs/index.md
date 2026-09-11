@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.JustJabka:Just-Races:v1.1.0")
+    compileOnly("com.github.JustJabka:Just-Races:Release")
 }
 
 // ...
