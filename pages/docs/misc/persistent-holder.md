@@ -26,7 +26,6 @@ Paper's native `PersistentDataContainer` allows storing custom data on entities,
 | :--- | :--- | :--- |
 | **Abilities** | `BaseAbility` | `justraces:abilities` |
 | **Traits** | `BaseTraitListener`, `BaseTraitRunnable` | `justraces:traits` |
-| **Races** | `BaseRaceListener`, `BaseRaceRunnable` | `justraces:races` |
 
 ---
 
@@ -50,13 +49,6 @@ For the full list of supported data types and helper methods, check the `Persist
 In this example, an ability tracks how many times a player has activated it. Once the counter reaches 10, the stored data resets automatically.
 
 ```java
-package com.example.addon.ability;
-
-import justjabka.justraces.api.abilities.generic.BaseAbility;
-import justjabka.justraces.api.types.AbilityContext;
-import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
-
 public class ExamplePersistentAbility extends BaseAbility {
 
     @Override

@@ -9,19 +9,6 @@ This guide walks you through creating, registering, configuring, and customizing
 To build a basic ability, extend `BaseAbility` and define its default attributes, inputs, and execution logic.
 
 ```java
-package com.example.addon.ability;
-
-import justjabka.justraces.api.abilities.generic.BaseAbility;
-import justjabka.justraces.api.types.AbilityContext;
-import justjabka.justraces.api.types.Trigger;
-import justjabka.justraces.api.types.TriggerCondition;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
-
-import java.util.Set;
-
 public class ExampleAbility extends BaseAbility {
     private static final double DASH_STRENGTH = 1.5;
 
@@ -79,13 +66,6 @@ If canActivate() returns false, the execution cancels immediately without trigge
 Register your ability during plugin initialization before loading any race resources.
 
 ```java
-package com.example.addon.registry;
-
-import com.example.addon.ability.ExampleAbility;
-import justjabka.justraces.api.abilities.generic.BaseAbility;
-import justjabka.justraces.api.JustRacesRegistries;
-import org.jetbrains.annotations.NotNull;
-
 public class AbilitiesRegistry {
 
     public static void register() {
@@ -111,20 +91,10 @@ public final class ExampleAddon extends JavaPlugin {
 
 ## Adding Ability Configurations
 
-To make your ability customizable via JSON instead of hardcoding values in Java Class, implement the `AbilityConfigurable` interface.
+To make your ability customizable via JSON instead of hardcoding values in Java Class, implement the `ConfigurableAbility` interface.
 
 ```java
-package com.example.addon.ability;
-
-import justjabka.justraces.api.abilities.generic.BaseAbility;
-import justjabka.justraces.api.interfaces.configurable.AbilityConfigurable;
-import justjabka.justraces.api.types.AbilityContext;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
-
-public class ExampleAbility extends BaseAbility implements AbilityConfigurable {
+public class ExampleAbility extends BaseAbility implements ConfigurableAbility {
 
     // ...
 

@@ -19,10 +19,16 @@ Place your JSON file inside your server's data folder:
     "atlas": "minecraft:items",
     "sprite": "minecraft:item/diamond"
   },
-  "attributes": {
-    "minecraft:max_health": 26,
-    "minecraft:attack_damage": 2.0
-  },
+  "attributes": [
+    {
+      "id": "minecraft:max_health",
+      "amount": 26
+    },
+    {
+      "id": "minecraft:attack_damage",
+      "amount": 2
+    }
+  ],
   "abilities": [
     "example:some_ability"
   ],
@@ -37,10 +43,7 @@ Place your JSON file inside your server's data folder:
       "minecraft:iron_ingot"
     ]
   },
-  "hidden": false,
-  "config": {
-    "custom_setting": 100
-  }
+  "hidden": false
 }
 
 ```
@@ -86,14 +89,9 @@ my-addon/
 
 ## Register in Plugin Lifecycle
 
-Call `ResourceManager.registerRacesFromPlugin()` inside your `onEnable()` method:
+Call `ResourceManager#registerRacesFromPlugin` inside your `onEnable()` method:
 
-```java{10-12}
-package com.example.addon;
-
-import justjabka.justraces.api.managers.ResourceManager;
-import org.bukkit.plugin.java.JavaPlugin;
-
+```java{5-7}
 public final class ExampleAddon extends JavaPlugin {
 
     @Override

@@ -54,7 +54,6 @@ Use `isRequiredTrait(Player)` to exactly know that event is envolving a player w
 
 `BaseTraitRunnable` executes code periodically for every player who has the trait.
 
-Приклад:
 ```java
 public class ExampleRunnableTrait extends BaseTraitRunnable {
 
@@ -110,10 +109,10 @@ public final class ExampleAddon extends JavaPlugin {
 
 ## Adding Trait Configurations
 
-To make your trait customizable via JSON instead of hardcoding values in Java Class, implement the `TraitConfigurable` interface.
+To make your trait customizable via JSON instead of hardcoding values in Java Class, implement the `ConfigurableTrait` interface.
 
 ```java
-public class ExampleListenerTrait extends BaseTraitListener implements TraitConfigurable {
+public class ExampleListenerTrait extends BaseTraitListener implements ConfigurableTrait {
 
     @Override
     public NamespacedKey getKey() {

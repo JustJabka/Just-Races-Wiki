@@ -65,7 +65,7 @@ Use `onToggle(Player player, boolean newState)` to execute visual cues like play
 This example toggles a stance that flips incoming damage values, provided the player maintains full **Leather Armor**.
 
 ```java
-public class DamageInversionAbility extends TogglableAbility implements AbilityConfigurable {
+public class DamageInversionAbility extends TogglableAbility implements ConfigurableAbility {
 
     @Override
     public NamespacedKey getKey() {

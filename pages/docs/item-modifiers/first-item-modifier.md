@@ -2,7 +2,7 @@
 
 Item Modifiers allow you to dynamically alter item properties, based on the holding player's race.
 
-This guide walks you through creating, registering, configuring, and customizing your first item modifier in **JustRaces**.
+This guide walks you through creating, registering, configuring, and customizing your first Item Modifier in **JustRaces**.
 
 ::: important
 Don't confuse with [Vanilla Minecraft's Item Modifiers](https://minecraft.wiki/w/Item_modifier)
@@ -24,10 +24,10 @@ When reverting changes in `undo()`, always prefer Paper's `item.resetData(...)` 
 
 ## Creating the Item Modifer Class
 
-To create a custom modifier, extend `BaseModifier` and implement your `apply` and `undo` methods.
+To create a custom modifier, extend `BaseItemModifier` and implement your `apply` and `undo` methods.
 
 ```java
-public class ExampleModifier extends BaseModifier {
+public class ExampleItemModifier extends BaseItemModifier {
     
     @Override
     public NamespacedKey getKey() {
@@ -53,14 +53,14 @@ public class ExampleModifier extends BaseModifier {
 Register your item modifier during plugin initialization before loading any race resources.
 
 ```java
-public class ModifiersRegistry {
+public class ItemModifiersRegistry {
 
     public static void register() {
-        registerModifier(new ExampleModifier());
+        registerItemModifier(new ExampleItemModifier());
     }
 
-    private static void registerModifier(BaseModifier modifier) {
-        JustRacesRegistries.MODIFIERS.register(modifier.getKey(), modifier);
+    private static void registerItemModifier(BaseItemModifier modifier) {
+        JustRacesRegistries.ITEM_MODIFIERS.register(modifier.getKey(), modifier);
     }
 }
 ```
@@ -71,18 +71,18 @@ public final class ExampleAddon extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        ModifiersRegistry.register();
+        ItemModifiersRegistry.register();
     }
 }
 ```
 
 ## Merging Data Components
 
-Instead of completely overwriting existing Data Components, `BaseModifier` provides the `mergeComponent` helper method. This allows you to append builder-based properties (such as custom consumable effects) without wiping the item's existing data.
+Instead of completely overwriting existing Data Components, `BaseItemModifier` provides the `mergeComponent` helper method. This allows you to append builder-based properties (such as custom consumable effects) without wiping the item's existing data.
 
 
 ```java
-public class ExampleModifier extends BaseModifier {
+public class ExampleItemModifier extends BaseItemModifier {
 
     @Override
     public NamespacedKey getKey() {
@@ -108,10 +108,10 @@ public class ExampleModifier extends BaseModifier {
 
 ## Adding Item Modifier Configurations
 
-To make your item modifier customizable via JSON instead of hardcoding values in Java Class, implement the `ItemModifierConfigurable` interface.
+To make your item modifier customizable via JSON instead of hardcoding values in Java Class, implement the `ConfigurableItemModifier` interface.
 
 ```java
-public class ExampleModifier extends BaseModifier implements ItemModifierConfigurable {
+public class ExampleItemModifier extends BaseItemModifier implements ConfigurableItemModifier {
 
     @Override
     public NamespacedKey getKey() {
@@ -133,9 +133,9 @@ public class ExampleModifier extends BaseModifier implements ItemModifierConfigu
 
 ### JSON Configuration File
 
-Create a corresponding JSON file inside your plugin's `resources/modifiers/` folder matching your key namespace:
+Create a corresponding JSON file inside your plugin's `resources/item_modifiers/` folder matching your key namespace:
 
-`resources/modifiers/test_modifier.json`
+`resources/item_modifiers/test_modifier.json`
 ```json
 {
     "max_stack_size": 16

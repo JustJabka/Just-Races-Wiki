@@ -1,12 +1,12 @@
 # Advanced Item Modifier
 
-While `BaseModifier` is great for general item component changes, **JustRaces** provides specialized base classes for common complex item mechanics: altering food properties and modifying equipment attribute modifiers.
+While `BaseItemModifier` is great for general item component changes, **JustRaces** provides specialized base classes for common complex item mechanics: altering food properties and modifying equipment attribute modifiers.
 
 ---
 
-## Food & Consumable Modifier (`BaseFoodModifier`)
+## Food & Consumable Modifier (`BaseFoodItemModifier`)
 
-The `BaseFoodModifier` allows a race to modify how items function as food or consumables (e.g., making non-edible items edible, tweaking nutrition/saturation values, or adding consumption cooldowns).
+The `BaseFoodItemModifier` allows a race to modify how items function as food or consumables (e.g., making non-edible items edible, tweaking nutrition/saturation values, or adding consumption cooldowns).
 
 It automatically handles merging and resetting `FOOD`, `CONSUMABLE`, and `USE_COOLDOWN` Data Components.
 
@@ -14,16 +14,16 @@ It automatically handles merging and resetting `FOOD`, `CONSUMABLE`, and `USE_CO
 
 | Method | Return Type | Description |
 | :--- | :--- | :--- |
-| `getFoodProperties()` | `@Nullable Consumer<FoodProperties.Builder>` | Configures nutrition, saturation, and eating mechanics. Return `null` to ignore. |
-| `getConsumable()` | `@Nullable Consumer<Consumable.Builder>` | Configures consume animation, sounds, and potion/status effects upon eating. Return `null` to ignore. |
-| `getUseCooldown()` | `@Nullable UseCooldown` | Applies an item usage cooldown after consuming. Return `null` to ignore. |
+| `getFoodProperties()` | `Consumer<FoodProperties.Builder>` | Configures nutrition, saturation, and eating mechanics. Return `null` to ignore. |
+| `getConsumable()` | `Consumer<Consumable.Builder>` | Configures consume animation, sounds, and potion/status effects upon eating. Return `null` to ignore. |
+| `getUseCooldown()` | `UseCooldown` | Applies an item usage cooldown after consuming. Return `null` to ignore. |
 
 ### Example: Custom Food Values
 
 Makes any item assigned to this modifier grant 10 nutrition points and 4.5 saturation:
 
 ```java
-public class ExampleFoodModifier extends BaseFoodModifier {
+public class ExampleFoodModifier extends BaseFoodItemModifier {
 
     @Override
     public NamespacedKey getKey() {
@@ -47,31 +47,28 @@ public class ExampleFoodModifier extends BaseFoodModifier {
         return null; // No usage cooldown
     }
 }
-
 ```
 
 ---
 
-## Armor & Equipment Attribute Modifier (`BaseArmorModifier`)
+## Armor & Equipment Attribute Modifier (`BaseArmorItemModifier`)
 
-The `BaseArmorModifier` simplifies adding custom entity attributes (like bonus health, movement speed, or armor toughness) to equipment items while preserving their original vanilla attributes and slot group contexts.
-
-It automatically resolves target equipment slot groups (helmet, chestplate, leggings, boots) from the item's `EQUIPPABLE` data component and creates dynamic keys to prevent duplicate modifier bugs.
+The `BaseArmorItemModifier` simplifies adding custom entity attributes (like bonus health, movement speed, or armor toughness) to equipment items while preserving their original vanilla attributes and slot group contexts.
 
 ### Key Methods
 
 | Method | Return Type | Description |
 | --- | --- | --- |
-| `getAttribute()` | `Attribute` | Target Minecraft attribute (e.g., `Attribute.MOVEMENT_SPEED`, `Attribute.MAX_HEALTH`). |
-| `getAttributeAmount()` | `double` | Modifier numerical value. |
-| `getAttributeOperation()` | `AttributeModifier.Operation` | Operation type (`ADD_NUMBER`, `ADD_SCALED_MULTIPLICATIVE`, `MULTIPLICATIVE_SCALAR_1`). |
+| `getAttributeModifier()` | `UnkeyedAttributeModifier` | Same as `AttributeModifier`, but without a key (because it generates automatically). Return `null` to ignore. |
+| `getEquippable()` | `Consumer<Equippable.Builder>` | Configures equipment properties. Return `null` to ignore. |
+| `getEquippableSlotFallBack()` | `EquipmentSlot` | Fallback Equipment Slot for items that has not Equippable component. Return `null` to ignore. |
 
 ### Example: Speed Boosting Armor
 
-Applies a flat movement speed boost (+0.02) to any armor piece held or equipped by players of this race:
+Applies a flat movement speed boost (+0.02) to any armor piece equipped by players of this race:
 
 ```java
-public class ExampleArmorModifier extends BaseArmorModifier {
+public class ExampleArmorModifier extends BaseArmorItemModifier {
 
     @Override
     public NamespacedKey getKey() {
@@ -79,23 +76,22 @@ public class ExampleArmorModifier extends BaseArmorModifier {
     }
 
     @Override
-    public Attribute getAttribute() {
-        return Attribute.MOVEMENT_SPEED;
+    public @Nullable UnkeyedAttributeModifier getAttributeModifier() {
+        return new UnkeyedAttributeModifier(
+                Attribute.MOVEMENT_SPEED,
+                0.02, // Adds +0.02 base movement speed
+                AttributeModifier.Operation.ADD_NUMBER
+        );
     }
 
     @Override
-    public double getAttributeAmount() {
-        return 0.02; // Adds +0.02 base movement speed
+    public @Nullable Consumer<Equippable.Builder> getEquippable() {
+        return builder -> builder.equipSound(Registry.SOUNDS.getKey(Sound.ENTITY_ITEM_BREAK));
     }
 
     @Override
-    public AttributeModifier.Operation getAttributeOperation() {
-        return AttributeModifier.Operation.ADD_NUMBER;
+    public @NotNull EquipmentSlot getEquippableSlotFallBack() {
+        return EquipmentSlot.HEAD;
     }
 }
-
 ```
-
-::: tip Slot Group Isolation
-`BaseArmorModifier` automatically queries Paper's `EQUIPPABLE` component on the item to determine the exact `EquipmentSlotGroup`. This ensures attribute modifiers apply correctly depending on whether the item is a helmet, chestplate, leggings or boot piece.
-:::

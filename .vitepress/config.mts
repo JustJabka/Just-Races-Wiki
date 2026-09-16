@@ -61,6 +61,7 @@ head: [
           collapsed: true,
           items: [
             { text: 'Creating Your First Trait', link: '/docs/traits/first-trait'},
+            { text: 'Advanced Trait', link: '/docs/traits/advanced-trait'},
           ]
         },
         {
