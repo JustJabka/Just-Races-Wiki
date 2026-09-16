@@ -7,10 +7,14 @@ export default defineConfig({
   base: '/Just-Races-Wiki/',
   appearance: true,
 
-  head: [
-    [
-      'link', { rel: 'icon', href: '/Just-Races-Wiki/favicon.png' }
-    ]
+head: [
+  ['link', { rel: 'icon', href: '/Just-Races-Wiki/favicon.png' }],
+  ['meta', { name: 'keywords', content: 'Minecraft races, Spigot races plugin, PaperMC races API, Just Races Minecraft, Minecraft dev framework' }],
+  ['meta', { property: 'og:type', content: 'website' }],
+  ['meta', { property: 'og:title', content: 'Just Races Framework' }],
+  ['meta', { property: 'og:description', content: 'Fast, lightweight, data-driven Minecraft races framework.' }],
+  ['meta', { property: 'og:image', content: 'https://justjabka.github.io/Just-Races-Wiki/logo.png' }],
+  ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
   ],
 
   title: 'Just Races',
@@ -106,5 +110,8 @@ export default defineConfig({
     }
   },
 
-  cleanUrls: true
+  cleanUrls: true,
+  sitemap: {
+    hostname: 'https://justjabka.github.io/Just-Races-Wiki/'
+  }
 })
