@@ -18,17 +18,17 @@ public class ExampleAbility extends BaseAbility {
     }
 
     @Override
-    public long getCooldownTicks() {
+    public long cooldown() {
         return 5 * 20; // 5 seconds * 20 ticks = 100 ticks
     }
 
     @Override
-    public Trigger getDefaultTrigger() {
+    public Trigger trigger() {
         return Trigger.SNEAK_TOGGLE;
     }
 
     @Override
-    public Set<TriggerCondition> getDefaultTriggerConditions() {
+    public Set<TriggerCondition> triggerConditions() {
         return Set.of(TriggerCondition.EMPTY_HAND);
     }
 
@@ -99,7 +99,7 @@ public class ExampleAbility extends BaseAbility implements ConfigurableAbility {
     // ...
 
     @Override
-    public long getCooldownTicks() {
+    public long cooldown() {
         // Retrieves the "cooldown" key from the JSON configuration.
         // You can also use getConfigLong(path...) for specific paths.
         return getConfigCooldown();
@@ -146,18 +146,18 @@ By default, the bar uses a `WHITE` color and a `MISSINGNO` icon (a black and pin
 
 ![Default Cooldown Bar](/assets/cooldown_bar.png)
 
-Override `getCooldownBarColor(Player)` and `getCooldownBarIcon(Player)` to change them:
+Override `barColor(Player)` and `barIcon(Player)` to change them:
 ```java
 public class ExampleAbility extends BaseAbility {
     // ...
 
     @Override
-    public BossBar.Color getCooldownBarColor(Player player) {
+    public BossBar.Color barColor(Player player) {
         return BossBar.Color.BLUE;
     }
     
     @Override
-    public Component getCooldownBarIcon(Player player) {
+    public Component barIcon(Player player) {
         return Component.text("⭐");
     }
 
@@ -176,7 +176,7 @@ Standard emojis or characters might appear vertically misaligned inside the Boss
 
 ```java
 @Override
-public Component getCooldownBarIcon(Player player) {
+public Component barIcon(Player player) {
     return Component.text("\uE000").font(Key.key("example", "cooldown_bar"));
 }
 ```
@@ -186,7 +186,7 @@ public Component getCooldownBarIcon(Player player) {
 Because both visual methods receive the `Player` instance, you can dynamically adjust the UI based on real-time gameplay state (e.g., resource availability):
 ``` java
 @Override
-public BossBar.Color getCooldownBarColor(Player player) {
+public BossBar.Color barColor(Player player) {
     boolean hasEnoughMana = getPlayerMana(player) >= 25;
     return hasEnoughMana ? BossBar.Color.GREEN : BossBar.Color.RED;
 }

@@ -68,3 +68,27 @@ The `attributes` field supports two different types of attribute change: Setting
   ]
 }
 ```
+
+## Recipes
+
+The `recipes` field holds race-specific recipes.
+
+
+```json
+{
+  "recipes": [
+    "justraces:namespace/recipe"
+  ]
+}
+```
+
+:::important
+There’s a small catch with this field: it only works with recipes from the `justraces` namespace.
+
+This is because, without it, the system would have to know every single recipe a player can and cannot craft,
+which could potentially break some vanilla crafting recipes (since they would be blocked for everyone except a single race).
+:::
+
+:::tip
+You can, place your recipe in a separate sub-namespace to avoid potential recipe conflicts.
+:::

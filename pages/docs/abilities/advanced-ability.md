@@ -98,7 +98,7 @@ public class DamageInversionAbility extends TogglableAbility implements Configur
     @EventHandler(ignoreCancelled = true)
     public void onArmorChange(EntityEquipmentChangedEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
-        if (!getContainerBoolean(player, getKey())) return;
+        if (!isEnabled(player)) return;
 
         // Auto-disable if validity check fails on armor swap
         if (!isStateValid(player)) {
@@ -138,7 +138,7 @@ public class SlimeTrailAbility extends BaseAbility implements DurationAbility, R
     // ...
 
     @Override
-    public long getDurationTicks() {
+    public long duration() {
         return 200L; // 10 seconds
     }
 
@@ -153,7 +153,7 @@ public class SlimeTrailAbility extends BaseAbility implements DurationAbility, R
     @Override
     public BukkitRunnable createRunnable(Player player) {
         return new BukkitRunnable() {
-            long durationLeft = getDurationTicks();
+            long durationLeft = duration();
 
             @Override
             public void run() {
@@ -189,7 +189,7 @@ public class SlimeTrailAbility extends BaseAbility implements DurationAbility, R
 | Interface | Primary Purpose | Key Methods |
 | --- | --- | --- |
 | **`ResettableAbility`** | Universal state cleanup when events occur | `resetState(UUID, Reason)` |
-| **`DurationAbility`** | Abilities with finite duration | `getDurationTicks()`, `onExpire(Player)` |
+| **`DurationAbility`** | Abilities with finite duration | `duration()`, `onExpire(Player)` |
 | **`RunnableAbility`** | Scheduled periodic tasks | `createRunnable(Player)` |
 | **`ValidationAbility`** | Dynamic state checks (e.g., armor/location) | `isStateValid(Player)`, `onInvalidated(Player)` |
 | **`TogglableAbility`** | Abstract base for persistent ON/OFF abilities | `toggle(Player)`, `enable(Player)`, `disable(Player)` |

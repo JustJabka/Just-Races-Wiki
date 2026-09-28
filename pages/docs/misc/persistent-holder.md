@@ -51,29 +51,31 @@ In this example, an ability tracks how many times a player has activated it. Onc
 ```java
 public class ExamplePersistentAbility extends BaseAbility {
 
+    private static final NamespacedKey USE_AMOUNT_KEY = new NamespacedKey("example", "use_amount");
+
     @Override
     public NamespacedKey getKey() {
         return new NamespacedKey("example", "test_persistent_ability");
     }
 
     @Override
-    public long getCooldownTicks() {
+    public long cooldown() {
         return 20L; // 1 second cooldown
     }
 
     @Override
     protected boolean onActivation(Player player, AbilityContext ctx) {
         // 1. Fetch current usage count from the player's ability container
-        int useAmount = getContainerInt(player, getKey());
+        int useAmount = getEntryInt(player, USE_AMOUNT_KEY);
 
         if (useAmount >= 10) {
-            // 2. Clear container data when limit is reached
-            removeContainerData(player, getKey());
+            // 2. Clear entry data when limit is reached
+            removeEntryData(player, USE_AMOUNT_KEY);
             player.sendMessage("Ability usage counter has been reset!");
         } else {
             // 3. Increment and save updated value
             useAmount++;
-            setContainerInt(player, getKey(), useAmount);
+            setEntryInt(player, USE_AMOUNT_KEY, useAmount);
 
             player.sendMessage("You have used this ability %s time(s).".formatted(useAmount));
         }
@@ -84,5 +86,5 @@ public class ExamplePersistentAbility extends BaseAbility {
 ```
 
 ::: info NBT Storage Path
-In the example above, the key `example:test_persistent_ability` is stored inside `BukkitValues."justraces:abilities"`, keeping it isolated from other plugins and root player data.
+In the example above, the key `example:use_amount` is stored inside `BukkitValues."justraces:abilities"."example:test_persistent_ability"`, keeping it isolated from other plugins and root player data.
 :::

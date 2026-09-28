@@ -8,12 +8,18 @@ To handle state lifecycle seamlessly without relying on manual event handling, *
 
 ## State Lifecycle (`ResettableTrait`)
 
-Unlike abilities, traits are straightforward: **a player either has the trait active, or they don't**. There are no complex cooldowns, durations, or execute reasons. 
-
 `ResettableTrait` ensures your trait logic applies **immediately** upon receiving the race (or transient trait) and cleans itself up properly when removed.
 
 ```java
 public interface ResettableTrait {
+
+    enum Reason {
+        QUIT,
+        DEATH,
+        RACE_CHANGE,
+        TRAIT_END,
+        CUSTOM
+    }
 
     /**
      * Called immediately when the trait is applied to the player 
@@ -24,9 +30,9 @@ public interface ResettableTrait {
     /**
      * Called when the trait is removed or reset from the player.
      */
-    void resetState(UUID pid);
+    void resetState(UUID pid, Reason reason);
 
-    default void resetState(Player player) {
+    default void resetState(Player player, Reason reason) {
         if (player == null) return;
         resetState(player.getUniqueId());
     }
@@ -43,9 +49,8 @@ Without `applyState()`, event-driven traits would force players to wait for a sp
 `applyState()` acts as an immediate initialization hook. It allows you to run your state logic instantly upon trait assignment, ensuring zero delay in passive attribute calculation.
 
 ::: tip Lifecycle Integration
-
 * **`applyState(Player)`** is called by the core framework immediately when a player receives the trait.
-* **`resetState(UUID)`** behaves similarly to [`ResettableAbility#resetState()`](../abilities/advanced-ability.md#state-cleanup--resettable-abilities), but without reason.
+* **`resetState(UUID, Reason)`** behaves very similar to [`ResettableAbility#resetState()`](../abilities/advanced-ability.md#state-cleanup--resettable-abilities).
 :::
 
 ---
@@ -81,7 +86,7 @@ public class BoundShellTrait extends BaseTraitListener implements ResettableTrai
 
     // Cleanup when trait is removed
     @Override
-    public void resetState(UUID pid) {
+    public void resetState(UUID pid, Reason reason) {
         Player player = Bukkit.getPlayer(pid);
         if (player == null) return;
 

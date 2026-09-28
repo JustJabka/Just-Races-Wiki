@@ -58,13 +58,13 @@ Use `isRequiredTrait(Player)` to exactly know that event is envolving a player w
 public class ExampleRunnableTrait extends BaseTraitRunnable {
 
     @Override
-    public long getTickPeriod() {
-        return 4 * 20;
+    public NamespacedKey getKey() {
+        return new NamespacedKey("example", "test_runnable_trait");
     }
 
     @Override
-    public NamespacedKey getKey() {
-        return new NamespacedKey("example", "test_runnable_trait");
+    public long tickPeriod() {
+        return 4 * 20;
     }
 
     @Override

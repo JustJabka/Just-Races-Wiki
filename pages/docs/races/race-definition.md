@@ -16,5 +16,6 @@ Every field in the Race Definition is **optional**. Unspecified fields will simp
 | `attributes` | `Set<AttributeEntry>` | Vanilla or custom attribute modifiers/base value applied while playing as this race. |
 | `abilities` | `Set<AbilityEntry>` | Active abilities mapped to triggers and conditions. |
 | `traits` | `Set<Trait>` | Passive mechanics. |
-| `item_modifiers` | `Map<BaseItemModifier, Set<Material>>` | Special item properties that only works with this race (supports single items, item tags, or arrays). |
+| `item_modifiers` | `Set<ItemModifierEntry>` | Special item properties that only works with this race (supports single items, item tags, or arrays). |
+| `recipes` | `Set<CraftingRecipe>` | Recipes that only this race can craft. |
 | `hidden` | `Boolean` | If `true`, hides the race from race-selection screen (default: `false`). |

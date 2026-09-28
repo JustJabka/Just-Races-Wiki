@@ -14,9 +14,9 @@ It automatically handles merging and resetting `FOOD`, `CONSUMABLE`, and `USE_CO
 
 | Method | Return Type | Description |
 | :--- | :--- | :--- |
-| `getFoodProperties()` | `Consumer<FoodProperties.Builder>` | Configures nutrition, saturation, and eating mechanics. Return `null` to ignore. |
-| `getConsumable()` | `Consumer<Consumable.Builder>` | Configures consume animation, sounds, and potion/status effects upon eating. Return `null` to ignore. |
-| `getUseCooldown()` | `UseCooldown` | Applies an item usage cooldown after consuming. Return `null` to ignore. |
+| `foodProperties()` | `Consumer<FoodProperties.Builder>` | Configures nutrition, saturation, and eating mechanics. Return `null` to ignore. |
+| `consumable()` | `Consumer<Consumable.Builder>` | Configures consume animation, sounds, and potion/status effects upon eating. Return `null` to ignore. |
+| `useCooldown()` | `UseCooldown` | Applies an item usage cooldown after consuming. Return `null` to ignore. |
 
 ### Example: Custom Food Values
 
@@ -31,19 +31,19 @@ public class ExampleFoodModifier extends BaseFoodItemModifier {
     }
 
     @Override
-    public @Nullable Consumer<FoodProperties.Builder> getFoodProperties() {
+    public @Nullable Consumer<FoodProperties.Builder> foodProperties() {
         return builder -> builder
                 .nutrition(10)
                 .saturation(4.5f);
     }
 
     @Override
-    public @Nullable Consumer<Consumable.Builder> getConsumable() {
+    public @Nullable Consumer<Consumable.Builder> consumable() {
         return null; // Keep vanilla consume behavior
     }
 
     @Override
-    public @Nullable UseCooldown getUseCooldown() {
+    public @Nullable UseCooldown useCooldown() {
         return null; // No usage cooldown
     }
 }
@@ -59,9 +59,9 @@ The `BaseArmorItemModifier` simplifies adding custom entity attributes (like bon
 
 | Method | Return Type | Description |
 | --- | --- | --- |
-| `getAttributeModifier()` | `UnkeyedAttributeModifier` | Same as `AttributeModifier`, but without a key (because it generates automatically). Return `null` to ignore. |
-| `getEquippable()` | `Consumer<Equippable.Builder>` | Configures equipment properties. Return `null` to ignore. |
-| `getEquippableSlotFallBack()` | `EquipmentSlot` | Fallback Equipment Slot for items that has not Equippable component. Return `null` to ignore. |
+| `attributeModifier()` | `UnkeyedAttributeModifier` | Same as `AttributeModifier`, but without a key (because it generates automatically). Return `null` to ignore. |
+| `equippable()` | `Consumer<Equippable.Builder>` | Configures equipment properties. Return `null` to ignore. |
+| `equippableSlotFallBack()` | `EquipmentSlot` | Fallback Equipment Slot for items that has not Equippable component. Return `null` to ignore. |
 
 ### Example: Speed Boosting Armor
 
@@ -76,7 +76,7 @@ public class ExampleArmorModifier extends BaseArmorItemModifier {
     }
 
     @Override
-    public @Nullable UnkeyedAttributeModifier getAttributeModifier() {
+    public @Nullable UnkeyedAttributeModifier attributeModifier() {
         return new UnkeyedAttributeModifier(
                 Attribute.MOVEMENT_SPEED,
                 0.02, // Adds +0.02 base movement speed
@@ -85,12 +85,12 @@ public class ExampleArmorModifier extends BaseArmorItemModifier {
     }
 
     @Override
-    public @Nullable Consumer<Equippable.Builder> getEquippable() {
+    public @Nullable Consumer<Equippable.Builder> equippable() {
         return builder -> builder.equipSound(Registry.SOUNDS.getKey(Sound.ENTITY_ITEM_BREAK));
     }
 
     @Override
-    public @NotNull EquipmentSlot getEquippableSlotFallBack() {
+    public @NotNull EquipmentSlot equippableSlotFallBack() {
         return EquipmentSlot.HEAD;
     }
 }
