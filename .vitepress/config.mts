@@ -102,7 +102,8 @@ head: [
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/JustJabka/Just-Races-Wiki' }
+      { icon: 'github', link: 'https://github.com/JustJabka/Just-Races-Wiki' },
+      { icon: 'modrinth', link: 'https://modrinth.com/plugin/just-races' },
     ],
     
     footer: {

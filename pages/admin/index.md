@@ -12,6 +12,15 @@ Before installing JustRaces, ensure your server environment meets the following 
 
 ## Installation
 
+### Stable Builds
+
+1. Download the latest **JustRaces** `.jar` on the [**Modrinth Page**](https://modrinth.com/plugin/just-races)
+2. Place the `justraces-core.jar` into your server's `plugins/` directory.
+3. Restart the server.
+
+
+### Dev Builds
+
 1. Download the latest **JustRaces** `.zip` artifact in the [**Github Actions** tab](https://github.com/JustJabka/Just-Races/actions)
 
 ![Github Actions Tab](/assets/installation/github_actions.png)
