@@ -5,7 +5,7 @@
 Before installing JustRaces, ensure your server environment meets the following requirements:
 
 * **Java:** Version **25** or higher.
-* **Minecraft & Paper:** Version **26.2**.
+* **Minecraft & Paper:** Version **26.3**.
 * **PacketEvenets:** [Latest Version](https://modrinth.com/plugin/packetevents).
 
 ---

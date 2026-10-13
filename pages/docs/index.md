@@ -41,7 +41,7 @@ Next, register JustRaces as a dependency in your plugin's manifest file (`src/ma
 ```yaml
 name: ExampleAddon
 version: '1.0.0'
-api-version: '26.2'
+api-version: '26.3'
 
 # ...
 
